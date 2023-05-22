@@ -6,10 +6,20 @@ public class Driver : MonoBehaviour
 {
 
     [SerializeField] float turnSpeed = 0.5f;
-    [SerializeField] float moveSpeed = 0.01f;
-    void Start()
+    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] float slowSpeed = 15f;
+    [SerializeField] float boostSpeed = 30f;
+    void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.tag == "SpeedBoost")
+        {
+            moveSpeed = boostSpeed;
+        }
+    }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        moveSpeed = slowSpeed;
     }
 
     void Update()
